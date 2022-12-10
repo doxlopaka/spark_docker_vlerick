@@ -10,6 +10,8 @@ COPY . /repo
 
 #Install pip requirments
 RUN python -m pip install -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt 
 
 #Define the command to be run
 #when the container is started
