@@ -1,2 +1,17 @@
 numpy
 pandas
+xgboost
+sklearn.model_selection 
+train_test_split
+sklearn.linear_model 
+LinearRegression
+sklearn.feature_selection 
+RFE
+LogisticRegression
+Lasso, Ridge
+XGBRegressor
+sklearn.ensemble 
+RandomForestRegressor
+sklearn.metrics 
+r2_score
+mean_absolute_error 
