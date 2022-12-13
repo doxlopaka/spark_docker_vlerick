@@ -1,6 +1,17 @@
 from pyspark import SparkConf
 from pyspark.sql import SparkSession
 
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Lasso, Ridge
+from xgboost import XGBRegressor
+from sklearn.ensemble import RandomForestRegressor
+
 BUCKET = "dmacademy-course-assets" 
 KEY1 = "vlerick/after_release.csv"
 KEY2 = "vlerick/pre_release.csv"
@@ -16,3 +27,8 @@ df2 = spark.read.csv(f"s3a://{BUCKET}/{KEY2}", header = True)
 
 df1.show()
 df2.show()
+
+df = df1.merge(df2, on='movie_title', how='inner')
+
+#IMDB Code
+
