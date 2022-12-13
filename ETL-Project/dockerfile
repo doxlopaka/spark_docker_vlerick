@@ -1,20 +1,25 @@
-FROM python:3.8-slim-buster
+FROM python:3.9.13
 
 #Create non-root user
+USER root
+RUN apt-get update && apt-get install -y openjdk-11-jdk
+
 RUN useradd -ms /bin/bash python-api
-USER pyhton-api
+USER python-api
+
 
 #Copy the source files into the container
-WORKDIR /repo
-COPY . /repo
+WORKDIR /repo/
+COPY . /repo/
 
 #Install pip requirments
-RUN python -m pip install -r requirements.txt
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt 
+RUN pip install --upgrade pip
+RUN pip install -r /repo/requirements.txt
 
 #Define the command to be run
 #when the container is started
 EXPOSE 8080
+
+
 ENTRYPOINT ["python"]
-CMD ["ETL-project.py"]
+CMD ["/repo/ETL-Project.py"]
